@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>net.isometry.alfred.sshpublickey</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>1FD80F29-0072-4B77-B252-AE5932D7D743</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5D504EE8-85E1-4904-B5C6-EFC9E640A3C8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>73503A72-F4BD-4C29-B531-ACE7CF405F6B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1FD80F29-0072-4B77-B252-AE5932D7D743</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>oldcai.ssh.publickey.copy</string>
+	<key>description</key>
+	<string>Filter and copy SSH public key to clipboard with smart key autocompletion</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>CopyPublicKey</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>#!/bin/bash
+
+SSHKEY_FILENAME="{query}".pub
+if [ ! -f ~/.ssh/$SSHKEY_FILENAME ]; then
+	SSHKEY_FILENAME=id_rsa.pub
+fi
+
+cat ~/.ssh/$SSHKEY_FILENAME | pbcopy
+
+echo "copied $SSHKEY_FILENAME"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1FD80F29-0072-4B77-B252-AE5932D7D743</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>keyword</key>
+				<string>pk</string>
+				<key>runningsubtext</key>
+				<string>Please Wait: matching key…</string>
+				<key>script</key>
+				<string>from alfredssh import complete
+print complete("{query}")</string>
+				<key>subtext</key>
+				<string>Copy SSH Public Key with smart key autocompletion</string>
+				<key>title</key>
+				<string>Copy SSH Public Key</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>73503A72-F4BD-4C29-B531-ACE7CF405F6B</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Public Key</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>5D504EE8-85E1-4904-B5C6-EFC9E640A3C8</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># Copy Public Key v1.0
+
+Helps you find and copy SSH public key to Clipboard.
+
+There is a blog post(written in Chinese) about this workflow here:
+http://www.oldcai.com/archives/992
+Feel free to contact me by comment(Both English and Chinese are welcome) on my blog.</string>
+	<key>uidata</key>
+	<dict>
+		<key>1FD80F29-0072-4B77-B252-AE5932D7D743</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>5D504EE8-85E1-4904-B5C6-EFC9E640A3C8</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>73503A72-F4BD-4C29-B531-ACE7CF405F6B</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://www.oldcai.com/archives/tag/alfred-workflow</string>
+</dict>
+</plist>
