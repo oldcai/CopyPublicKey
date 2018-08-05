@@ -5,7 +5,7 @@
 	<key>bundleid</key>
 	<string>net.isometry.alfred.sshpublickey</string>
 	<key>category</key>
-	<string>Tools</string>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>1FD80F29-0072-4B77-B252-AE5932D7D743</key>
@@ -13,6 +13,25 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>5D504EE8-85E1-4904-B5C6-EFC9E640A3C8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>716AC0C1-F234-4668-A17D-55D492051106</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>5B006A9F-FCF1-4B7A-83C1-73EC96633159</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>04E689C5-FFCA-4578-A6EE-F7EEB30B82A4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -29,6 +48,14 @@
 				<key>modifiersubtext</key>
 				<string></string>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>5B006A9F-FCF1-4B7A-83C1-73EC96633159</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Generate script save key to authorized_keys</string>
+			</dict>
 		</array>
 	</dict>
 	<key>createdby</key>
@@ -38,35 +65,9 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>CopyPublicKey</string>
+	<string>Copy SSH Public Key</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>#!/bin/bash
-
-SSHKEY_FILENAME="{query}".pub
-if [ ! -f ~/.ssh/$SSHKEY_FILENAME ]; then
-	SSHKEY_FILENAME=id_rsa.pub
-fi
-
-cat ~/.ssh/$SSHKEY_FILENAME | pbcopy
-
-echo "copied $SSHKEY_FILENAME"</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>1FD80F29-0072-4B77-B252-AE5932D7D743</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -76,6 +77,14 @@ echo "copied $SSHKEY_FILENAME"</string>
 				<integer>4</integer>
 				<key>keyword</key>
 				<string>pk</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
 				<key>runningsubtext</key>
 				<string>Please Wait: matching key…</string>
 				<key>script</key>
@@ -122,26 +131,127 @@ print complete("{query}")</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>#!/bin/bash
+
+SSHKEY_FILENAME="{query}".pub
+if [ ! -f ~/.ssh/$SSHKEY_FILENAME ]; then
+	SSHKEY_FILENAME=id_rsa.pub
+fi
+
+cat ~/.ssh/$SSHKEY_FILENAME</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1FD80F29-0072-4B77-B252-AE5932D7D743</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>716AC0C1-F234-4668-A17D-55D492051106</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>#!/bin/bash
+
+SSHKEY_FILENAME="{query}".pub
+if [ ! -f ~/.ssh/$SSHKEY_FILENAME ]; then
+	SSHKEY_FILENAME=id_rsa.pub
+fi
+
+cat ~/.ssh/$SSHKEY_FILENAME</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>5B006A9F-FCF1-4B7A-83C1-73EC96633159</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>mkdir -p ~/.ssh
+cat &gt;&gt; ~/.ssh/authorized_keys &lt;&lt;END
+{query}END
+chmod -R 700 ~/.ssh
+</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>04E689C5-FFCA-4578-A6EE-F7EEB30B82A4</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string># Copy Public Key v1.0
 
-Helps you find and copy SSH public key to Clipboard.
+Helps you find and copy SSH public key to Clipboard or even creates shell script to help you generate ~/.ssh/authorized_keys file.
 
 There is a blog post(written in Chinese) about this workflow here:
 http://www.oldcai.com/archives/992
 Feel free to contact me by comment(Both English and Chinese are welcome) on my blog.</string>
 	<key>uidata</key>
 	<dict>
+		<key>04E689C5-FFCA-4578-A6EE-F7EEB30B82A4</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
 		<key>1FD80F29-0072-4B77-B252-AE5932D7D743</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>20</real>
+		</dict>
+		<key>5B006A9F-FCF1-4B7A-83C1-73EC96633159</key>
+		<dict>
+			<key>ypos</key>
+			<real>230</real>
 		</dict>
 		<key>5D504EE8-85E1-4904-B5C6-EFC9E640A3C8</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>716AC0C1-F234-4668-A17D-55D492051106</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
 		</dict>
 		<key>73503A72-F4BD-4C29-B531-ACE7CF405F6B</key>
 		<dict>
