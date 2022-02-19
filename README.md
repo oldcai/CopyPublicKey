@@ -1,14 +1,18 @@
-# Copy Public Key Workflow
+# Alfred Workflow: Copy Public Key
 
-## Releases
- * You can download `.alfredworkflow` package from [releases](https://github.com/oldcai/alfred_workflow_copy_public_key/releases)
-
-## Introduction
-This workflow will help you to find and copy SSH public key to clipboard. It is fast and have the feature of autocompletion.
+Find and copy SSH public keys at ease.
 
 ![copy public key](https://cloud.githubusercontent.com/assets/1150130/3714035/0c8251ce-1592-11e4-925c-d46961526a31.png)
 
-It helps you to filter and copy SSH public key by just type a few letters and enter.
+[Download](https://github.com/oldcai/CopyPublicKey/raw/master/CopyPublicKey.alfredworkflow)
 
-## Contact
-Feel free to contact me by comment on [my blog](http://www.oldcai.com/archives/992). Both Chinese and English comments are welcome.
+## How to use
+
+When you are selecting a public key,
+
+Press Enter: copy the public key to the clipboard.
+
+Command(⌘) + Enter: generate shell script that helps you with generating ~/.ssh/authorized_keys file.
+
+## Thank you
+Feel free to submit an issue when you face some problems.
